@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package restotunisie;
+package restotunisie.DAO;
 
 /**
  *
  * @author Rayhane
  */
-public class FactureDAO implements InterfaceFactureDAO{
+public class ReservationDAO implements InterfaceReservationDAO{
     
 }
