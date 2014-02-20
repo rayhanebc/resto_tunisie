@@ -21,7 +21,7 @@ public class RestaurateurDAO implements RestaurateurDaoInterface{
     }
 
     @Override
-    public void deleteRestaurateur(int id) {
+    public void deleteRestaurateur(String nom) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
