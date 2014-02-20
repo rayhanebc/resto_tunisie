@@ -9,7 +9,7 @@ public interface RestaurateurDaoInterface {
     
     public void createRestaurateur(Restaurateur r);
     public void updateRestaurateur(Restaurateur r);
-    public void deleteRestaurateur(int id);
+    public void deleteRestaurateur(String nom);
     public Restaurateur findRestaurateur(int id);
     public List<Restaurateur> displayAllRestaurateurs();
     

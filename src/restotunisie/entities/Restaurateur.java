@@ -9,21 +9,21 @@ public class Restaurateur {
    private int note;
    private String Tel;
    private String Fax;
-   private Date horaireMatinDebut;
-   private Date HoraireMatinFin;
-   private Date HoraireApremDebut;
-   private Date HoraireApremFin;
+   private Date horaireOverture;
+   private Date HoraireFermeture;
    private float budget;
 
+   public Restaurateur()
+   {}
+   
     public Restaurateur(String nomRestaurant, int note, String Tel, String Fax, Date horaireMatinDebut, Date HoraireMatinFin, Date HoraireApremDebut, Date HoraireApremFin, float budget) {
         this.nomRestaurant = nomRestaurant;
         this.note = note;
         this.Tel = Tel;
         this.Fax = Fax;
-        this.horaireMatinDebut = horaireMatinDebut;
-        this.HoraireMatinFin = HoraireMatinFin;
-        this.HoraireApremDebut = HoraireApremDebut;
-        this.HoraireApremFin = HoraireApremFin;
+        this.horaireOverture= horaireMatinDebut;
+        
+        this.HoraireFermeture = HoraireApremFin;
         this.budget = budget;
     }
 
@@ -43,21 +43,10 @@ public class Restaurateur {
         return Fax;
     }
 
-    public Date getHoraireMatinDebut() {
-        return horaireMatinDebut;
-    }
+    
+    
 
-    public Date getHoraireMatinFin() {
-        return HoraireMatinFin;
-    }
-
-    public Date getHoraireApremDebut() {
-        return HoraireApremDebut;
-    }
-
-    public Date getHoraireApremFin() {
-        return HoraireApremFin;
-    }
+   
 
     public float getBudget() {
         return budget;
@@ -79,24 +68,38 @@ public class Restaurateur {
         this.Fax = Fax;
     }
 
-    public void setHoraireMatinDebut(Date horaireMatinDebut) {
-        this.horaireMatinDebut = horaireMatinDebut;
-    }
-
-    public void setHoraireMatinFin(Date HoraireMatinFin) {
-        this.HoraireMatinFin = HoraireMatinFin;
-    }
-
-    public void setHoraireApremDebut(Date HoraireApremDebut) {
-        this.HoraireApremDebut = HoraireApremDebut;
-    }
-
-    public void setHoraireApremFin(Date HoraireApremFin) {
-        this.HoraireApremFin = HoraireApremFin;
-    }
+   
 
     public void setBudget(float budget) {
         this.budget = budget;
+    }
+
+    /**
+     * @return the horaireOverture
+     */
+    public Date getHoraireOverture() {
+        return horaireOverture;
+    }
+
+    /**
+     * @param horaireOverture the horaireOverture to set
+     */
+    public void setHoraireOverture(Date horaireOverture) {
+        this.horaireOverture = horaireOverture;
+    }
+
+    /**
+     * @return the HoraireFermeture
+     */
+    public Date getHoraireFermeture() {
+        return HoraireFermeture;
+    }
+
+    /**
+     * @param HoraireFermeture the HoraireFermeture to set
+     */
+    public void setHoraireFermeture(Date HoraireFermeture) {
+        this.HoraireFermeture = HoraireFermeture;
     }
     
    
