@@ -4,6 +4,7 @@
  */
 package restotunisie.gui;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -142,7 +143,18 @@ public class SupprimerCommentaire extends javax.swing.JFrame {
     private void btnSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupprimerActionPerformed
 
          DefaultTableModel model= (DefaultTableModel) commentaire.getModel() ;
-         model.removeRow(commentaire.getSelectedRow());
+         
+         if(commentaire.getRowCount() == 0) {
+             JOptionPane.showMessageDialog(null,"aucun commentaire");
+         }else{
+             if(commentaire.getSelectedRow() == -1){
+                  JOptionPane.showMessageDialog(null,"aucun commentaire selectionner");
+             }else{
+                  model.removeRow(commentaire.getSelectedRow());
+             }
+             
+         }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSupprimerActionPerformed
 
