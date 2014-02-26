@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import restotunisie.DAO.ClientDAO;
+import restotunisie.DAO.UtilisateurDAO;
 import restotunisie.entities.Client;
 
 /**
@@ -24,8 +25,11 @@ public class GestionClient extends javax.swing.JFrame {
     public class ClientModel extends AbstractTableModel {
 
     private String[] columnNames = {"Login", "Nom", "Prenom", "Cin", "Adresse", "Mail", "Tel"};
-    private List<Client> dat = (new ClientDAO().displayAllClients());
+    private List<Client> dat;
+    public ClientModel(){
+    dat = new ClientDAO().displayAllClients();
 
+    }
     @Override
     public int getRowCount() {
         return dat.size();
@@ -60,7 +64,6 @@ public class GestionClient extends javax.swing.JFrame {
 
     public GestionClient() {
         initComponents();
-        TableClient.setModel(new ClientModel());
     }
 
     /**
@@ -80,35 +83,8 @@ public class GestionClient extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestion des utilisateurs");
         setPreferredSize(new java.awt.Dimension(800, 600));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        TableClient.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Login", "Nom", "Prenom", "Cin", "Adresse", "Email", "Tel", "Password"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        TableClient.setModel(new ClientModel());
         TableClient.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TableClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,19 +115,18 @@ public class GestionClient extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(136, 136, 136)
                                 .addComponent(SupprimerUtilisateur)))
-                        .addContainerGap(359, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(0, 349, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(236, 236, 236)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(SupprimerUtilisateur)
                 .addContainerGap(67, Short.MAX_VALUE))
         );
@@ -161,13 +136,9 @@ public class GestionClient extends javax.swing.JFrame {
 
     private void SupprimerUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupprimerUtilisateurActionPerformed
         DefaultTableModel model= new DefaultTableModel();
-        ClientDAO cldao = new ClientDAO();
-        cldao.deleteClient((String) model.getValueAt(TableClient.getSelectedRow() , 0));
+        UtilisateurDAO cldao = new UtilisateurDAO();
+        cldao.deleteUtilisateur((String) model.getValueAt(TableClient.getSelectedRow() , 0));
     }//GEN-LAST:event_SupprimerUtilisateurActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
-    }//GEN-LAST:event_formWindowOpened
 
     private void TableClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableClientMouseClicked
         

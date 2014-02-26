@@ -32,10 +32,10 @@ public class UtilisateurDAO implements InterfaceUtilisateurDAO {
         try {
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ps.setString(1, login);
-            ps.executeUpdate();
+            ps.executeUpdate(requete);
             System.out.println("client supprimée");
         } 
-catch (SQLException ex) {
+        catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors de la suppression " + ex.getMessage());
         }

@@ -50,12 +50,12 @@ public class ClientDAO implements InterfaceClientDAO{
 
             while (resultat.next()) {
                 Client c = new Client();
-                c.setCin(resultat.getString("cin")+"");
+                c.setCin(resultat.getInt("cin")+"");
                 c.setNom(resultat.getString("nom"));
                 c.setPrenom(resultat.getString("prenom"));
                 c.setAdresse(resultat.getString("adresse"));
                 c.setTelephone(resultat.getString("tel"));
-                c.setMail(resultat.getString("mail"));
+                c.setMail(resultat.getString("email"));
                 c.setLogin(resultat.getString("login"));
                 listeclient.add(c);
 
