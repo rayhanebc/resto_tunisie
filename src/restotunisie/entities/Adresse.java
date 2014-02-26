@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package restotunisie.entities;
 
 /**
@@ -11,16 +10,21 @@ package restotunisie.entities;
  * @author lenovo
  */
 public class Adresse {
+
     int Id;
     String Region;
     String Rue;
     int Code_Postal;
-    
-    public Adresse(String reg, String r, int code_p){
+
+    public Adresse() {
+    }
+
+    public Adresse(String reg, String r, int code_p) {
         Region = reg;
         Rue = r;
         Code_Postal = code_p;
     }
+
     public int getId() {
         return Id;
     }
@@ -52,6 +56,4 @@ public class Adresse {
     public void setCode_Postal(int Code_Postal) {
         this.Code_Postal = Code_Postal;
     }
-
-    
 }

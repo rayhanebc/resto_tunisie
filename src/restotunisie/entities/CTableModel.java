@@ -17,6 +17,13 @@ public class CTableModel extends AbstractTableModel {
     private String[] columnNames = {"Nom du restaurant", "Fax", "note"};
     private List<Restaurateur> dat = (new RestaurateurDAO().displayAllRestaurateurs());
 
+    public List<Restaurateur> getDat() {
+        return dat;
+    }
+
+    
+    
+    
     @Override
     public int getRowCount() {
         return dat.size();
@@ -27,9 +34,11 @@ public class CTableModel extends AbstractTableModel {
         return columnNames.length;
     }
 
+    
     @Override
     public Object getValueAt(int rowIndex, int ColumnIndex) {
         Restaurateur re = dat.get(rowIndex);
+      
         switch (ColumnIndex) {
             case 0:
                 return re.getNomRestaurant();

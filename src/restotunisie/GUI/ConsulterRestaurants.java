@@ -41,6 +41,7 @@ public class ConsulterRestaurants extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         loginTf = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
@@ -94,8 +95,11 @@ public class ConsulterRestaurants extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jtableListeResto.setCellSelectionEnabled(true);
         jtableListeResto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jtableListeResto, org.jdesktop.beansbinding.ELProperty.create("false"), jtableListeResto, org.jdesktop.beansbinding.BeanProperty.create("columnSelectionAllowed"));
+        bindingGroup.addBinding(binding);
+
         jtableListeResto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtableListeRestoMouseClicked(evt);
@@ -258,6 +262,8 @@ public class ConsulterRestaurants extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -273,39 +279,43 @@ public class ConsulterRestaurants extends javax.swing.JFrame {
           jPanel1.setVisible(true);        
         try {
             int row = jtableListeResto.getSelectedRow();
-            String Table_click = (jtableListeResto.getModel().getValueAt(row, 0).toString());
+            int column =jtableListeResto.getColumnCount();
+            for(int i=0 ; i < column; i++){
+                Object selectedObj = (Object)jtableListeResto.getModel().getValueAt(row, i);
+          //  String Table_click = (jtableListeResto.getModel().getValueAt(row, i).toString());
+                System.out.println(selectedObj);
+            String requete = "select * from restaurateur  ";
 
 
-            String requete = "select * from restaurateur where nom_restaurant='" + Table_click + "' ";
-
-            Statement statement = MyConnection.getInstance()
-                    .createStatement();
+            Statement statement = MyConnection.getInstance().createStatement();
             ResultSet resultat = statement.executeQuery(requete);
 
             if (resultat.next()) {
-                String add1 = resultat.getString("nom_restaurant");
-                Login_tf.setText(add1);
- Login_tf.setEditable(false);
-                String add2 = resultat.getString("h_ouverture");
-                h_ouverture_tf.setText(add2);
+                String nom_resto = resultat.getString("nom_restaurant");
+                Login_tf.setText(nom_resto);
+                Login_tf.setEditable(false);
+                String h_ouv = resultat.getString("h_ouverture");
+                h_ouverture_tf.setText(h_ouv);
                 h_ouverture_tf.setEditable(false);
-                String add3 = resultat.getString("h_fermeture");
-                h_fermeture_tf.setText(add3);
+                String h_fer = resultat.getString("h_fermeture");
+                h_fermeture_tf.setText(h_fer);
                 h_fermeture_tf.setEditable(false);
-                String add4 = resultat.getString("note");
-                note_tf.setText(add4);
+                String note = resultat.getString("note");
+                note_tf.setText(note);
                 note_tf.setEditable(false);
-                String add5 = resultat.getString("telephone");
-                tel_tf.setText(add5);
+                String tel = resultat.getString("telephone");
+                tel_tf.setText(tel);
                 tel_tf.setEditable(false);
-                String add6 = resultat.getString("fax");
-                fax_tf.setText(add6);
+                String fax = resultat.getString("fax");
+                fax_tf.setText(fax);
                 fax_tf.setEditable(false);
-                String add7 = resultat.getString("budget");
-                budget_tf.setText(add7);
+                String budget = resultat.getString("budget");
+                budget_tf.setText(budget);
                 budget_tf.setEditable(false);
+                 String region = resultat.getString("region");
+                jAdr.setText(region);
 
-
+ }
             }
 
         } catch (Exception e) {
@@ -379,5 +389,6 @@ public class ConsulterRestaurants extends javax.swing.JFrame {
     private javax.swing.JTextField loginTf;
     private javax.swing.JTextField note_tf;
     private javax.swing.JTextField tel_tf;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

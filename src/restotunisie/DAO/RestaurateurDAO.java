@@ -89,7 +89,7 @@ public class RestaurateurDAO implements RestaurateurDaoInterface {
 
 
 //
-        String requete = "select * from restaurateur";
+        String requete = "select * from restaurateur r join adresse a on r.id_resto=a.id_resto ";
         try {
             Statement statement = MyConnection.getInstance()
                     .createStatement();
