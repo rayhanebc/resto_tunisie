@@ -17,7 +17,9 @@ public interface AdresseDaoInterface {
     public void createAdresse(Adresse adresse);
     public void updateAdresse(Adresse adresse);
     public void deleteAdresse(String label);
-    public Adresse findAdresse(String a);
+    public Adresse findAdresseByRegion(String reg);
+    public Adresse findAdresseByCodePostal(String codP);
+    public Adresse findAdresseByRue(String rue);
     public List<Adresse> findAllAdresse();
     
 }
