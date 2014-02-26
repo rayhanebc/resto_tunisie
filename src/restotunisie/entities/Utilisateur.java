@@ -9,6 +9,10 @@ public class Utilisateur {
     protected String login;
     protected String mdp;
 
+    public Utilisateur() {
+    }
+    
+
     public Utilisateur(String login, String mdp) {
         this.login = login;
         this.mdp = mdp;
