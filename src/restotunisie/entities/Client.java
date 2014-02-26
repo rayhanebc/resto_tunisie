@@ -17,6 +17,10 @@ public class Client extends Utilisateur {
     private String telephone;
     private String mail;
 
+    public Client() {
+    }
+    
+
    public Client(String cin, String nom, String prenom, String adresse, String telephone, String mail, String login, String mdp) {
         super(login, mdp);
         this.cin = cin;
